@@ -71,11 +71,11 @@ ls -l /honeypot/logs/
 
 💡 Want to improve this tool? Feel free to submit a Pull Request or open an Issue on GitHub!
 
-📧 Contact: [your.email@example.com]
+📧 Contact: [arya.koner07@gmail.com]
 
 🔒 Disclaimer
 
 🚠 For Ethical Use Only:This tool is designed for educational and security research purposes.Unauthorized deployment for malicious use is strictly prohibited.
 
-🚀 Made with ❤️ by ARYA KONER🔗 GitHub: https://github.com/yourgithubusername
+🚀 Made with ❤️ by ARYA KONER🔗 GitHub: https://github.com/hackarya
 
