@@ -6,7 +6,13 @@ Developed by ARYA KONER
 
 🚀 Features
 
-✅ Multi-Protocol Support: Monitors SSH, FTP, DNS, and Web attacks.✅ Real-Time Logging: Captures intrusions and suspicious activity.✅ Web Dashboard: Live attack visualization and analytics.✅ Automated IP Banning: Blocks repeated attackers instantly.✅ Log Rotation & Storage: Efficient log management for long-term insights.✅ Firewall Integration: Works with UFW, IPTables, and Fail2Ban.✅ Customizable & Scalable: Designed to fit enterprise security needs.
+✅ Multi-Protocol Support: Monitors SSH, FTP, DNS, and Web attacks.
+✅ Real-Time Logging: Captures intrusions and suspicious activity.
+✅ Web Dashboard: Live attack visualization and analytics.
+✅ Automated IP Banning: Blocks repeated attackers instantly.
+✅ Log Rotation & Storage: Efficient log management for long-term insights.
+✅ Firewall Integration: Works with UFW, IPTables, and Fail2Ban.
+✅ Customizable & Scalable: Designed to fit enterprise security needs.
 
 🛠️ Installation Guide
 
