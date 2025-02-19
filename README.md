@@ -12,7 +12,7 @@ Developed by ARYA KONER
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/yourgithubusername/honeypot-security-tool.git  
+git clone https://github.com/hackarya/honeypot-security-tool.git  
 cd honeypot-security-tool  
 
 2️⃣ Run the Installation Script
