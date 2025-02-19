@@ -1,0 +1,65 @@
+#!/bin/bash
+
+# Honeypot Security Tool Installation Script
+echo "🚀 Starting Honeypot Installation..."
+
+# Ensure the script is run as root
+if [ "$(id -u)" -ne 0 ]; then
+    echo "❌ This script must be run as root! Use sudo ./install.sh"
+    exit 1
+fi
+
+# Update system packages
+echo "🔄 Updating system packages..."
+apt update && apt upgrade -y
+
+# Install required dependencies
+echo "📦 Installing dependencies..."
+apt install -y python3 python3-pip python3-venv ufw logrotate
+
+# Create a dedicated user for the honeypot
+echo "👤 Creating honeypot user..."
+useradd -r -s /usr/sbin/nologin honeypot || echo "User already exists."
+
+# Set up the honeypot directory
+echo "📂 Setting up directories..."
+mkdir -p /honeypot/logs /honeypot/config
+chown -R honeypot:honeypot /honeypot
+chmod -R 750 /honeypot
+
+# Copy honeypot files to the system
+echo "📥 Copying honeypot files..."
+cp -r honeypot.py config/ /honeypot/
+cp config/honeypot.service /etc/systemd/system/
+
+# Set correct permissions
+echo "🔒 Setting permissions..."
+chown -R honeypot:honeypot /honeypot
+chmod -R 750 /honeypot
+
+# Install Python dependencies
+echo "🐍 Installing Python dependencies..."
+python3 -m venv /honeypot/venv
+source /honeypot/venv/bin/activate
+pip install -r /honeypot/config/requirements.txt
+deactivate
+
+# Enable and start honeypot service
+echo "🛠️ Enabling and starting honeypot service..."
+systemctl daemon-reload
+systemctl enable honeypot.service
+systemctl start honeypot.service
+
+# Configure firewall (optional)
+echo "🔥 Configuring UFW Firewall..."
+ufw allow 22/tcp  # SSH
+ufw allow 80/tcp  # Web dashboard (if applicable)
+ufw allow 443/tcp # HTTPS (if applicable)
+ufw enable
+
+# Set up log rotation
+echo "🔄 Configuring log rotation..."
+cp config/logrotate.conf /etc/logrotate.d/honeypot
+
+echo "✅ Installation complete! Check service status:"
+systemctl status honeypot.service

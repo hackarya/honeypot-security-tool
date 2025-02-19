@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Honeypot Security Dashboard</title>
+    <style>
+        body {
+            background-color: #0f0f0f;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            text-align: center;
+            margin: 0;
+            padding: 20px;
+        }
+        h1 {
+            color: #0f0;
+            text-shadow: 0 0 10px #0f0;
+        }
+        .log-container {
+            max-width: 900px;
+            margin: auto;
+            padding: 15px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #00ff00;
+            overflow-y: auto;
+            max-height: 400px;
+        }
+        .log-entry {
+            padding: 8px;
+            border-bottom: 1px solid #008000;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        .stat-box {
+            padding: 15px;
+            background: rgba(0, 255, 0, 0.2);
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #00ff00;
+            min-width: 200px;
+        }
+        img {
+            width: 80%;
+            border: 2px solid #00ff00;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Honeypot Attack Dashboard</h1>
+
+    <div class="stats-container">
+        <div class="stat-box">
+            <h2>Total Attacks</h2>
+            <p id="attack-count">0</p>
+        </div>
+        <div class="stat-box">
+            <h2>Unique Attackers</h2>
+            <p id="unique-ips">0</p>
+        </div>
+    </div>
+
+    <h2>Attack Trends</h2>
+    <img src="{{ url_for('static', filename='attack_trends.png') }}" alt="Attack Trends Graph">
+
+    <h2>Attack Logs</h2>
+    <div class="log-container" id="log-container">
+        {% for log in logs %}
+            <div class="log-entry">{{ log }}</div>
+        {% endfor %}
+    </div>
+
+    <script>
+        async function updateDashboard() {
+            const logResponse = await fetch("/api/logs");
+            const statsResponse = await fetch("/api/stats");
+
+            const logData = await logResponse.json();
+            const statsData = await statsResponse.json();
+
+            let logContainer = document.getElementById("log-container");
+            logContainer.innerHTML = "";
+            logData.logs.forEach(log => {
+                let logEntry = document.createElement("div");
+                logEntry.className = "log-entry";
+                logEntry.textContent = log;
+                logContainer.appendChild(logEntry);
+            });
+
+            document.getElementById("attack-count").textContent = statsData.total_attacks;
+            document.getElementById("unique-ips").textContent = statsData.unique_ips;
+        }
+
+        setInterval(updateDashboard, 5000);
+        updateDashboard();
+    </script>
+</body>
+</html>

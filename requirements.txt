@@ -1,0 +1,15 @@
+flask                   # Web dashboard framework
+flask-socketio          # Real-time attack tracking
+requests                # Sending and receiving HTTP requests
+paramiko                # SSH honeypot handling
+pyftpdlib               # FTP honeypot handling
+dnslib                  # DNS honeypot handling
+scapy                   # Packet sniffing and analysis
+pandas                  # Data processing for attack logs
+matplotlib              # Graphs and visualizations
+numpy                   # Numerical computing for analytics
+loguru                  # Advanced logging system
+gunicorn                # Production WSGI server for Flask
+apscheduler             # Task scheduling (e.g., log cleanup)
+sqlalchemy              # Database ORM for attack data storage
+sqlite3                 # Lightweight database (comes with Python)

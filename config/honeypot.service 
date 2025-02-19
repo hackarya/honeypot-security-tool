@@ -1,0 +1,17 @@
+[Unit]
+Description=Honeypot Security Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 /honeypot/honeypot.py
+Restart=always
+User=honeypot
+Group=honeypot
+WorkingDirectory=/honeypot
+StandardOutput=append:/var/log/honeypot-service.log
+StandardError=append:/var/log/honeypot-service.log
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target
