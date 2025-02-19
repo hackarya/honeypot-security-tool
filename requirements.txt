@@ -13,3 +13,6 @@ gunicorn                # Production WSGI server for Flask
 apscheduler             # Task scheduling (e.g., log cleanup)
 sqlalchemy              # Database ORM for attack data storage
 sqlite3                 # Lightweight database (comes with Python)
+geoip2                  # IP geolocation for attack source tracking
+psutil                  # System monitoring (optional but useful)
+fail2ban                # Automated IP banning
