@@ -1,8 +1,8 @@
-🛡️ Honeypot Security Tool - Advanced Threat Detection
+<img src="https://github.com/user-attachments/assets/75ba6f03-aeca-47cb-b6f9-a592a5fd9789" width="5000">
+<h1 style="color: blue; width=500 ">Advanced Threat Detection Security Tool</h1>
+<p><mark>Developed by ARYA KONER</mark></p>
 
-Developed by ARYA KONER
-
-🔍 A powerful and intelligent Honeypot Security System designed for organizations to detect, analyze, and respond to cyber threats in real time.
+A powerful and intelligent Honeypot Security System designed for organizations to detect, analyze, and respond to cyber threats in real time.
 
 🚀 Features
 
